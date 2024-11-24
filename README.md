@@ -3,6 +3,8 @@
 This is the artifact belonging to the paper:
 > Wessel van Woerden, Dense and smooth lattices in any genus, Asiacrypt 2024.
 
+Which is publicly available at [eprint](https://eprint.iacr.org/2024/1468).
+
 It contains the following parts:
 
 1. The data, plots and utilities to generate the plots in the paper in `data/`, `plots/` and `scripts/plot_*`
@@ -32,7 +34,7 @@ To generate Figure 3 in the eprint go to the `scripts/` folder and run
 ```
 sage plot_concrete.sage
 ```
-This generates the file `plots/concrete_packing.pdf` corresponding to Figure 3 in section 4 of the eprint version. It is a plot of existence bounds for good packings in the genus of `I_k + 521I_k` for $k=8,16,24,32,40,48,56,64$.
+This generates the file `plots/concrete_packing.pdf` corresponding to Figure 3 in section 4 of the eprint version (this figure is not available in the published version due to page limits). It is a plot of existence bounds for good packings in the genus of `I_k + 521I_k` for $k=8,16,24,32,40,48,56,64$.
 The data for this is available in the `data/` folder.
 
 # Patch for computing local densities at $p=2$
