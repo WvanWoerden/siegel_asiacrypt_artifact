@@ -52,7 +52,7 @@ def print_results_packing(results):
 
 	bounds_lemma = [(n, bound_lemma(n)) for n in range(n_min, n_max+1)]
 	bounds_lemma = list(zip(*bounds_lemma))
-	plt.plot(bounds_lemma[0], np.sqrt(bounds_lemma[1]), linewidth=2, label="Lemma 4 (lower bound)")
+	plt.plot(bounds_lemma[0], np.sqrt(bounds_lemma[1]), linewidth=2, label="Lemma 5 (lower bound)")
 
 	bounds_milnor = [(n, bound_milnor(n)) for n in range(n_min, n_max+1)]
 	bounds_milnor = list(zip(*bounds_milnor))
@@ -82,7 +82,7 @@ def print_results_smoothing(results):
 	eps1 = 0.01
 	bounds_eps1 = [(n, bound_smoothing(n, eps1)) for n in range(n_min, n_max+1)]
 	bounds_eps1 = list(zip(*bounds_eps1))
-	plt.plot(bounds_eps1[0], bounds_eps1[1], color="red", label="Lemma 5 (upper bound)")
+	plt.plot(bounds_eps1[0], bounds_eps1[1], color="red", label="Lemma 8 (upper bound)")
 
 	eps2 = 1/sqrt(2^64 * 128)
 	bounds_eps2 = [(n, bound_smoothing(n, eps2)) for n in range(n_min, n_max+1)]
@@ -103,7 +103,7 @@ def print_results_smoothing(results):
 	plt.ylim((0.9, np.e+0.1))
 
 	plt.xlabel("Dimension (n)")
-	plt.ylabel("Smoothing $\\mu_\\varepsilon(G)$")
+	plt.ylabel("Smoothing $\\eta_\\varepsilon(G)$")
 
 	plt.legend()
 	fig.tight_layout()

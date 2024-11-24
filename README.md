@@ -16,8 +16,9 @@ Dependencies required including the version on which the scripts have been teste
 - SageMath (10.4)
 - Numpy (2.0.1)
 - Matplotlib (3.9.2)
+- LaTeX (e.g. pdfTex, TeXLive)
 
-Generally, it should be sufficient to have a somewhat recent version of Sagemath installed.
+Generally, it should be sufficient to have a somewhat recent version of Sagemath and a LaTeX distribution installed.
 
 # Plots
 
@@ -25,18 +26,18 @@ To generate the plots in the paper go to the `scripts/` folder and run
 ```
 sage plot_even_unimodular.sage
 ```
-This generates Figures 1 and 2 from the paper. It computes existence bounds for even unimodular lattices with a good packing and smoothing respectively.
+This generates the pdf files `plots/even_packing.pdf` and `plots/even_smoothing.pdf` corresponding to Figures 1 and 2 in section 3.2 of the paper respectively. It computes existence bounds for even unimodular lattices with a good packing and smoothing respectively.
 
 To generate Figure 3 in the eprint go to the `scripts/` folder and run
 ```
 sage plot_concrete.sage
 ```
-This generates a plot of existence bounds for good packings in the genus of `I_k + 521I_k` for $k=8,16,24,32,40,48,56,64$.
+This generates the file `plots/concrete_packing.pdf` corresponding to Figure 3 in section 4 of the eprint version. It is a plot of existence bounds for good packings in the genus of `I_k + 521I_k` for $k=8,16,24,32,40,48,56,64$.
 The data for this is available in the `data/` folder.
 
 # Patch for computing local densities at $p=2$
 
-The file `/scripts/quadratic_form_fixed` contains the class `QuadraticFormFixed` which fixes the inefficient implementation in the `QuadraticForm` class for counting local densities at $p=2$. 
+The file `scripts/quadratic_form_fixed` contains the class `QuadraticFormFixed` which fixes the inefficient implementation in the `QuadraticForm` class for counting local densities at $p=2$. 
 
 Here a small example of its usage. Note that the computation below is extremely slow for the regular `QuadraticForm` class in SageMath version 10.4, but with the patch it is nearly instant.
 ```
@@ -58,6 +59,8 @@ We also made a pull request to integrate the patch into future version of Sagema
 - [Issue](https://github.com/sagemath/sage/issues/38679)
 - [Pull request](https://github.com/sagemath/sage/pull/38680)
 
+Update: This pull request has now been integrated into the development branch of SageMath and thus the patch should be available in future versions 10.5+ of SageMath.
+
 # Data generation
 
 The data for Figure 3 of the eprint can be generated using the script `concrete_experiment.sage`. One can run the script with the parameters `n, k, q, start, end, cores` to compute the coefficients `starts, ..., end-1` of the average theta series over the genus of `I_k + qI_{n-k}` where `+` is an orthogonal sum..
@@ -68,7 +71,7 @@ sage concrete_experiment.sage 16 8 521 1 800 2
 computes the average theta series coefficients `N_1, ... , N_799` of the genus of `I_8 + 521I_8`.
 The output is stored in the file `data/siegel_product_{n}_{k}_{q}` where each row contains one space separated pair `i N_i`. 
 
-> At the moment Sagemath contains a bug for computing the average coefficients for even dimensional lattices, therefore one should only run the above script for even values of n.
+> At the moment Sagemath contains a bug for computing the average coefficients for odd dimensional lattices, therefore one should only run the above script for even values of n.
 
 Alternatively, one can execute
 ```
@@ -88,6 +91,7 @@ Note that the runtime can be quite significant for the larger dimensional cases.
 │   ├── custom.mplstyle
 │   ├── even_packing.pdf                    # Figure 1.
 │   └── even_smoothing.pdf                  # Figure 2.
+├── paper.pdf
 ├── README.md
 └── scripts
     ├── concrete_experiment.sage            # Script to generate data files
